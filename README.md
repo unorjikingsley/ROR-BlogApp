@@ -3,7 +3,6 @@
 </div>
 
 <a name="readme-top"></a>
-
 <!-- TABLE OF CONTENTS -->
 # 📗 Table of Contents
 
