@@ -5,12 +5,12 @@ class Comment < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :post, class_name: 'Post'
 
-  # Attribute - This sets up an attribute for the Comment model called text, with the 
+  # Attribute - This sets up an attribute for the Comment model called text, with the
   # data type of :text. It's a way to explicitly define an attribute and its data type.
   attribute :text, :text
 
   # Callbacks: This callback is triggered after a new comment is created/destroyed(deleted).
-  # It calls the update_post_comments_counter method to update the comments counter for 
+  # It calls the update_post_comments_counter method to update the comments counter for
   # the associated post
   after_create :update_post_comments_counter
   after_destory :update_post_comments_counter
