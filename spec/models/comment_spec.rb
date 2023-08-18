@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 Rspec.describe Comment, type: :model do
-  describe "#update_post_comments_counter" do
-    it "updates the post comments_counter attribute" do
+  describe '#update_post_comments_counter' do
+    it 'updates the post comments_counter attribute' do
       # Arrange
       user = User.create(name: 'King')
       post = Post.create(title: 'Hello', author: user)

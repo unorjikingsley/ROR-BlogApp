@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 Rspec.describe Like, type: :model do
-  describe "#update_post_likes_counter" do
-    it "updates the post likes_counter attributes" do
+  describe '#update_post_likes_counter' do
+    it 'updates the post likes_counter attributes' do
       # Arrange
       user = User.create(name: 'King')
       post = Post.create(title: 'Hello', author: user)

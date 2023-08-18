@@ -5,8 +5,8 @@ Rspec.describe Post, type: :model do
 
   before { subject.save }
 
-  describe "validate test" do
-    it "title should be present" do
+  describe 'validate test' do
+    it 'title should be present' do
       subject.title = nil
       expect(subject).to_not be_valid
     end
@@ -47,7 +47,7 @@ Rspec.describe Post, type: :model do
     end
   end
 
-  describe "#update_user_posts_counter" do
+  describe '#update_user_posts_counter' do
     it 'updates the user posts_counter attribute' do
       # Arrange
       user = User.create(name: 'John')
