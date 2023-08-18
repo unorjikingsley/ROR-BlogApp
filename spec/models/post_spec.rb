@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe Post, type: :model do
+RSpec.describe Post, type: :model do
   subject { Post.new(title: 'Welcome', author: User.create(name: 'John')) }
 
   before { subject.save }
@@ -57,7 +57,7 @@ Rspec.describe Post, type: :model do
       post.update_user_posts_counter
 
       # Assert
-      expect(user.reload.posts.counter).to eq(1)
+      expect(user.reload.posts_counter).to eq(1)
     end
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe Like, type: :model do
+RSpec.describe Like, type: :model do
   describe '#update_post_likes_counter' do
     it 'updates the post likes_counter attributes' do
       # Arrange
