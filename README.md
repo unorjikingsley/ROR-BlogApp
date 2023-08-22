@@ -45,6 +45,10 @@
 
 - Display likes on posts
 
+- Created controllers for users and posts
+
+.Tested the controllers
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
