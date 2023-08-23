@@ -1,12 +1,15 @@
 <h1>Here is the profile page and list of post by a specific users</h1>
 
-<a href="<%= user_posts_path(@user) %>">
+<a href="<%= users_path %>">
     <button id="back-btn">⬅</button>
 </a>
-<div class="user-box">
+<a href="<%= user_posts_path(@user) %>">
+    <div class="user-box">
     <%= render partial: 'shared/user_photo', locals: { user: @user } %>
     <%= render partial: 'shared/user_details', locals: { user: @user } %>
 </div>
+
+</a>
 <div class="bio">
     <h3>Bio</h3>
     <p>
