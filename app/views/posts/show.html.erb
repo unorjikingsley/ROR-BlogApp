@@ -9,8 +9,8 @@
 </div>
 <% if current_user.present? %>
   <div class="post-actions">
-    <%= button_to 'Like', post: @post unless @post.liked_by?(current_user) %>
-    <%= button_to 'Unlike', post: @post if @post.liked_by?(current_user) %>
+    <%= button_to "Like", like_user_post_path(@user, @post), method: :post, remote: true %>
+    <%= button_to "Unlike", unlike_user_post_path(@user, @post), method: :delete, remote: true %>
   </div>
 <% end %>
 <p><%= @post.text %></p>

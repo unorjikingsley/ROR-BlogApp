@@ -22,9 +22,9 @@ class Post < ApplicationRecord
     author.update(posts_counter: author.posts.count)
   end
 
-  def liked_by?(user)
-    likes.exists?(author: user)
-  end
+  # def liked_by?(user)
+  #   likes.exists?(author: user)
+  # end
 
   def five_most_recent_comments
     comments.order(created_at: :desc).limit(5)

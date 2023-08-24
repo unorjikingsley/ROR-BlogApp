@@ -8,11 +8,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts do
       member do
-        post 'like'   # Change this line to a post request
-        delete 'unlike'  # Change this line to a delete request
+        post 'like'  # Change this line to a post request
+        delete 'unlike' # Change this line to a delete request
       end
       resources :comments
-      resources :likes, only: [:create, :destroy]
     end
   end
 end
