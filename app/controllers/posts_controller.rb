@@ -10,13 +10,13 @@ class PostsController < ApplicationController
 
   def new
     @user = current_user
-    @posts = @user.posts.new
+    @post = @user.posts.new
   end
 
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      flash[:notice] = 'Post was successfully created'
+      flash[:notice] = 'Post created successfully.'
       redirect_to user_path(current_user)
     else
       render 'new'
@@ -31,8 +31,8 @@ class PostsController < ApplicationController
   end
 
   def unlike
-    @like = @post.likes.find_by(post: @post)
-    @like&.destroy
+    @like = @post.likes.find_by(post: @post) # Find the like
+    @like&.destroy # Destroy the like if found
     redirect_to user_post_path(@user, @post)
   end
 
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def find_post
-    @post = @user.posts.find_by(id: params[id])
+    @post = @user.posts.find_by(id: params[:id])
     return unless @post.nil?
 
     flash[:alert] = 'Post not found, back to posts page'
