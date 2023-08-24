@@ -5,7 +5,6 @@ class Like < ApplicationRecord
 
   # Callbacks
   after_save :update_post_likes_counter
-  after_destroy :update_post_likes_counter
 
   # Methods
   def update_post_likes_counter
