@@ -8,12 +8,15 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.new(comment_params)
-    @comment.author = @User
-    if @comment.save
-      flash[:notice] = 'Comment was successfully created'
-      redirect_to user_post_path(@user, @post)
-    else
-      render 'new'
+    @comment.author = current_user # Use 'current_user' instead of '@User'
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to user_post_path(@user, @post), notice: 'Comment was successfully created.' }
+        format.js # This will look for create.js.erb
+      else
+        format.html { render 'new' }
+      end
     end
   end
 

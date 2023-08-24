@@ -27,14 +27,6 @@ class LikesController < ApplicationController
 
   private
 
-  # def find_user
-  #   @user = current_user
-  # end
-
-  # def find_post
-  #   @post = Post.find(params[:post_id])
-  # end
-
   def find_user_and_post
     @user = User.find(params[:user_id])
     @post = @user.posts.find_by(id: params[:post_id])
