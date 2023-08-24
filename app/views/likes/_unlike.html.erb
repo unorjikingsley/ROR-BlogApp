@@ -1,0 +1,4 @@
+<div class="alert alert-info">
+  You unliked this post.
+</div>
+<%= link_to "Unlike", user_post_like_path(@user, @post, like), method: :delete %>
