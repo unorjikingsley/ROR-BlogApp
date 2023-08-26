@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   root "users#index"
 
   resources :users do
-    resources :posts, only: [:index, :create, :like, :unlike] do
+    resources :posts do
       member do
         post 'like'  # Change this line to a post request
         delete 'unlike' # Change this line to a delete request
       end
-      resources :comments, only: [:new, :create]
+      resources :comments
     end
   end
 end
