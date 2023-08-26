@@ -13,16 +13,6 @@ class PostsController < ApplicationController
     @post = @user.posts.new
   end
 
-  def create
-    @post = current_user.posts.new(post_params)
-    if @post.save
-      flash[:notice] = 'Post created successfully.'
-      redirect_to user_path(current_user)
-    else
-      render 'new'
-    end
-  end
-
   def like
     @like = @post.likes.new
     @like.author = current_user
@@ -31,9 +21,19 @@ class PostsController < ApplicationController
   end
 
   def unlike
-    @like = @post.likes.find_by(post: @post) # Find the like
-    @like&.destroy # Destroy the like if found
+    @like = @post.likes.find_by(post: @post)
+    @like&.destroy
     redirect_to user_post_path(@user, @post)
+  end
+
+  def create
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      flash[:notice] = 'Post created successfully.'
+      redirect_to user_path(current_user)
+    else
+      render 'new'
+    end
   end
 
   private
