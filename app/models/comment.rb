@@ -12,13 +12,17 @@ class Comment < ApplicationRecord
   # Callbacks: This callback is triggered after a new comment is created/destroyed(deleted).
   # It calls the update_post_comments_counter method to update the comments counter for
   # the associated post
-  after_create :update_post_comments_counter
-  after_destroy :update_post_comments_counter
+  after_create :increase_post_comments_counter
+  after_destroy :decrement_post_comments_counter
 
   # Methods - ustom method defined within the Comment model. It's responsible for updating
   # the comments_counter attribute of the associated post. It does so by querying the
   # total count of comments for the post and updating the counter attribute.
-  def update_post_comments_counter
-    post.update(comments_counter: post.comments.count)
+  def increase_post_comments_counter
+    post.increment!(:comments_counter)
+  end
+
+  def decrement_post_comments_counter
+    post.decrement!(:comments_counter)
   end
 end

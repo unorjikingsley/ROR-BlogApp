@@ -1,12 +1,8 @@
 class Post < ApplicationRecord
-  # Association
+  # Associations
   belongs_to :author, class_name: 'User'
   has_many :comments
   has_many :likes
-
-  validates :title, presence: true, length: { maximum: 250 }
-  validates :comments_counter, numericality: { greater_than_or_equal_to: 0, only_integer: true }
-  validates :likes_counter, numericality: { greater_than_or_equal_to: 0, only_integer: true }
 
   # Attributes
   attribute :title, :string
@@ -15,18 +11,24 @@ class Post < ApplicationRecord
   attribute :likes_counter, :integer, default: 0
 
   # Callbacks
-  after_save :update_user_posts_counter
+  after_save :increase_user_posts_counter
+  after_destroy :decrease_user_posts_counter
 
-  # Method
-  def update_user_posts_counter
-    author.update(posts_counter: author.posts.count)
+  # Validations
+  validates :title, presence: true, length: { maximum: 250 }
+  validates :comments_counter, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :likes_counter, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+
+  # Methods
+  def increase_user_posts_counter
+    author.increment!(:posts_counter)
   end
 
-  # def liked_by?(user)
-  #   likes.exists?(author: user)
-  # end
+  def decrease_user_posts_counter
+    author.decrement!(:posts_counter)
+  end
 
   def five_most_recent_comments
-    comments.order(created_at: :desc).limit(5)
+    comments.includes(:author).order(created_at: :asc).limit(5)
   end
 end
