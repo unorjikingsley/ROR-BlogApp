@@ -1,13 +1,12 @@
-<h1>Post</h1>
-
-<a href="<%= user_path(@user) %>">
+<a href="<%= users_path() %>">
     <button id="back-btn">⬅</button>
 </a>
 <ul>
-    <div class="user-box">
-        <%# <%= render partial: 'shared/user_photo', locals: { user: @user } %>
-        <%= render partial: 'shared/user_details', locals: { user: @user } %>
-    </div>
+    <a href="<%= user_path(@user) %>">
+        <div class="user-box">
+            <%= render partial: 'shared/user_details', locals: { user: @user } %>
+        </div>
+    </a>
     <% @posts.each do |post|%>
         <a href="<%= user_post_path(@user, post) %>">
             <div class="user-post">
@@ -31,6 +30,9 @@
             </div>
         </a>
     <% end %>
+    <a href="<%= new_user_post_path(@user) %>">
+        <button id="back-btn">New Post</button>
+    </a>
     <nav class="">
         <ul class="pagination justify-content-center">
             <% (1..@total_pages).each do |page| %>

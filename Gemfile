@@ -83,3 +83,5 @@ end
 gem 'bullet', '~> 7.0'
 
 gem 'devise', '~> 4.9'
+
+gem 'cancancan'
