@@ -22,6 +22,7 @@
   - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
+
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Blog App <a name="about-project"></a>
@@ -103,6 +104,10 @@ To run tests, run the following command:
 
 - GitHub: [@unorjikingsley](https://github.com/unorjikingsley)
 <!-- - LinkedIn: [username](link) -->
+
+👤 **Denio Nhanale**
+
+- GitHub: [deniodev](https://github.com/deniodev)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
