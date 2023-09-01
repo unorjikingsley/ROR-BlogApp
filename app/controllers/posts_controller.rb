@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[show like unlike destroy]
   # before_action :authenticate_user! # Add this line if you're using Devise or a similar authentication gem
   # load_and_authorize_resource :user
+
   load_and_authorize_resource :post, through: :user
 
   def index
